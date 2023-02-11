@@ -99,7 +99,7 @@ def write_instance_to_example_files(instances, tokenizer, max_seq_length,
   """Create TF example files from `TrainingInstance`s."""
   writers = []
   for output_file in output_files:
-    writers.append(tf..compat.v1.python_io.TFRecordWriter(output_file))
+    writers.append(tf.compat.v1.python_io.TFRecordWriter(output_file))
 
   writer_index = 0
 
@@ -139,7 +139,7 @@ def write_instance_to_example_files(instances, tokenizer, max_seq_length,
     features["masked_lm_weights"] = create_float_feature(masked_lm_weights)
     features["next_sentence_labels"] = create_int_feature([next_sentence_label])
 
-    tf_example = tf..compat.v1.train.Example(features=tf..compat.v1.train.Features(feature=features))
+    tf_example = tf.compat.v1.train.Example(features=tf.compat.v1.train.Features(feature=features))
 
     writers[writer_index].write(tf_example.SerializeToString())
     writer_index = (writer_index + 1) % len(writers)
@@ -147,7 +147,7 @@ def write_instance_to_example_files(instances, tokenizer, max_seq_length,
     total_written += 1
 
     if inst_index < 20:
-      tf..compat.v1.logging.info("*** Example ***")
+      tf.compat.v1.logging.info("*** Example ***")
       tf1.logging.info("tokens: %s" % " ".join(
           [tokenization.printable_text(x) for x in instance.tokens]))
 
