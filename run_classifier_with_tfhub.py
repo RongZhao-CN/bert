@@ -265,7 +265,7 @@ def main(_):
     result = estimator.evaluate(input_fn=eval_input_fn, steps=eval_steps)
 
     output_eval_file = os.path.join(FLAGS.output_dir, "eval_results.txt")
-    with tf.gfile.GFile(output_eval_file, "w") as writer:
+    with tf.io.gfile.GFile(output_eval_file, "w") as writer:
       tf.logging.info("***** Eval results *****")
       for key in sorted(result.keys()):
         tf.logging.info("  %s = %s", key, str(result[key]))
@@ -296,7 +296,7 @@ def main(_):
     result = estimator.predict(input_fn=predict_input_fn)
 
     output_predict_file = os.path.join(FLAGS.output_dir, "test_results.tsv")
-    with tf.gfile.GFile(output_predict_file, "w") as writer:
+    with tf.io.gfile.GFile(output_predict_file, "w") as writer:
       tf.logging.info("***** Predict results *****")
       for prediction in result:
         probabilities = prediction["probabilities"]

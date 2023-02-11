@@ -913,14 +913,14 @@ def write_predictions(all_examples, all_features, all_results, n_best_size,
 
     all_nbest_json[example.qas_id] = nbest_json
 
-  with tf.gfile.GFile(output_prediction_file, "w") as writer:
+  with tf.io.gfile.GFile(output_prediction_file, "w") as writer:
     writer.write(json.dumps(all_predictions, indent=4) + "\n")
 
-  with tf.gfile.GFile(output_nbest_file, "w") as writer:
+  with tf.io.gfile.GFile(output_nbest_file, "w") as writer:
     writer.write(json.dumps(all_nbest_json, indent=4) + "\n")
 
   if FLAGS.version_2_with_negative:
-    with tf.gfile.GFile(output_null_log_odds_file, "w") as writer:
+    with tf.io.gfile.GFile(output_null_log_odds_file, "w") as writer:
       writer.write(json.dumps(scores_diff_json, indent=4) + "\n")
 
 
