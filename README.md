@@ -884,7 +884,7 @@ paper.
 Here's how to run the data generation. The input is a plain text file, with one
 sentence per line. (It is important that these be actual sentences for the "next
 sentence prediction" task). Documents are delimited by empty lines. The output
-is a set of `tf.train.Example`s serialized into `TFRecord` file format.
+is a set of `tf1.train.Example`s serialized into `TFRecord` file format.
 
 You can perform sentence segmentation with an off-the-shelf NLP toolkit such as
 [spaCy](https://spacy.io/). The `create_pretraining_data.py` script will

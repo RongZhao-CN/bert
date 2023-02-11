@@ -23,7 +23,7 @@ import six
 import tensorflow as tf
 
 
-class TokenizationTest(tf.test.TestCase):
+class TokenizationTest(tf1.test.TestCase):
 
   def test_full_tokenizer(self):
     vocab_tokens = [
@@ -134,4 +134,4 @@ class TokenizationTest(tf.test.TestCase):
 
 
 if __name__ == "__main__":
-  tf.test.main()
+  tf1.test.main()

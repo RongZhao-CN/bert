@@ -26,7 +26,7 @@ import six
 import tensorflow as tf
 
 
-class BertModelTest(tf.test.TestCase):
+class BertModelTest(tf1.test.TestCase):
 
   class BertModelTester(object):
 
@@ -135,8 +135,8 @@ class BertModelTest(tf.test.TestCase):
   def run_tester(self, tester):
     with self.test_session() as sess:
       ops = tester.create_model()
-      init_op = tf.group(tf.global_variables_initializer(),
-                         tf.local_variables_initializer())
+      init_op = tf1.group(tf1.global_variables_initializer(),
+                         tf1.local_variables_initializer())
       sess.run(init_op)
       output_result = sess.run(ops)
       tester.check_output(output_result)
@@ -157,7 +157,7 @@ class BertModelTest(tf.test.TestCase):
     for _ in range(total_dims):
       values.append(rng.randint(0, vocab_size - 1))
 
-    return tf.constant(value=values, dtype=tf.int32, shape=shape, name=name)
+    return tf1.constant(value=values, dtype=tf1.int32, shape=shape, name=name)
 
   def assert_all_tensors_reachable(self, sess, outputs):
     """Checks that all the tensors in the graph are reachable from outputs."""
@@ -274,4 +274,4 @@ class BertModelTest(tf.test.TestCase):
 
 
 if __name__ == "__main__":
-  tf.test.main()
+  tf1.test.main()

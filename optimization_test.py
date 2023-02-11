@@ -20,23 +20,23 @@ import optimization
 import tensorflow as tf
 
 
-class OptimizationTest(tf.test.TestCase):
+class OptimizationTest(tf1.test.TestCase):
 
   def test_adam(self):
     with self.test_session() as sess:
-      w = tf.get_variable(
+      w = tf1.get_variable(
           "w",
           shape=[3],
-          initializer=tf.constant_initializer([0.1, -0.2, -0.1]))
-      x = tf.constant([0.4, 0.2, -0.5])
-      loss = tf.reduce_mean(tf.square(x - w))
-      tvars = tf.trainable_variables()
-      grads = tf.gradients(loss, tvars)
-      global_step = tf.train.get_or_create_global_step()
+          initializer=tf1.constant_initializer([0.1, -0.2, -0.1]))
+      x = tf1.constant([0.4, 0.2, -0.5])
+      loss = tf1.reduce_mean(tf1.square(x - w))
+      tvars = tf1.trainable_variables()
+      grads = tf1.gradients(loss, tvars)
+      global_step = tf1.train.get_or_create_global_step()
       optimizer = optimization.AdamWeightDecayOptimizer(learning_rate=0.2)
       train_op = optimizer.apply_gradients(zip(grads, tvars), global_step)
-      init_op = tf.group(tf.global_variables_initializer(),
-                         tf.local_variables_initializer())
+      init_op = tf1.group(tf1.global_variables_initializer(),
+                         tf1.local_variables_initializer())
       sess.run(init_op)
       for _ in range(100):
         sess.run(train_op)
@@ -45,4 +45,4 @@ class OptimizationTest(tf.test.TestCase):
 
 
 if __name__ == "__main__":
-  tf.test.main()
+  tf1.test.main()
