@@ -168,8 +168,8 @@ class BertModel(object):
     if token_type_ids is None:
       token_type_ids = tf.zeros(shape=[batch_size, seq_length], dtype=tf.int32)
 
-    with tf.compat.v1.compat.v1.variable_scope(scope, default_name="bert"):
-      with tf.compat.v1.compat.v1.variable_scope("embeddings"):
+    with tf.compat.v1.variable_scope(scope, default_name="bert"):
+      with tf.compat.v1.variable_scope("embeddings"):
         # Perform embedding lookup on the word ids.
         (self.embedding_output, self.embedding_table) = embedding_lookup(
             input_ids=input_ids,
@@ -979,7 +979,7 @@ def assert_rank(tensor, expected_rank, name=None):
 
   actual_rank = tensor.shape.ndims
   if actual_rank not in expected_rank_dict:
-    scope_name = tf.get_compat.v1.variable_scope().name
+    scope_name = tf.compat.v1.get_variable_scope().name
     raise ValueError(
         "For the tensor `%s` in scope `%s`, the actual rank "
         "`%d` (shape = %s) is not equal to the expected rank `%s`" %
