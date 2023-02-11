@@ -24,6 +24,7 @@ import re
 import modeling
 import six
 import tensorflow as tf
+import tensorflow.compat.v1 as tf1
 
 
 class BertModelTest(tf1.test.TestCase):

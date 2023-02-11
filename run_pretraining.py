@@ -22,6 +22,7 @@ import os
 import modeling
 import optimization
 import tensorflow as tf
+import tensorflow.compat.v1 as tf1
 
 flags = tf1.flags
 

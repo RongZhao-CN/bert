@@ -18,6 +18,7 @@ from __future__ import print_function
 
 import optimization
 import tensorflow as tf
+import tensorflow.compat.v1 as tf1
 
 
 class OptimizationTest(tf1.test.TestCase):

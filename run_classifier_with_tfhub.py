@@ -24,6 +24,7 @@ import run_classifier
 import tokenization
 import tensorflow as tf
 import tensorflow_hub as hub
+import tensorflow.compat.v1 as tf1
 
 flags = tf1.flags
 

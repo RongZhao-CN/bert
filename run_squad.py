@@ -28,6 +28,7 @@ import optimization
 import tokenization
 import six
 import tensorflow as tf
+import tensorflow.compat.v1 as tf1
 
 flags = tf1.flags
 
